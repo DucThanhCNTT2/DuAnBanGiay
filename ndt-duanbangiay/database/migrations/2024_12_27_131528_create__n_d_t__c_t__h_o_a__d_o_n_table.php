@@ -17,7 +17,7 @@ return new class extends Migration
             $table -> bigInteger('ndtSanPhamID') -> references('id') -> on('NDT_SAN_PHAM');
             $table -> integer('ndtSLMua');
             $table -> float('ndtDonGiaMua');
-            $table -> float('ndtThanhTien');
+            $table -> double('ndtThanhTien');
             $table -> tinyInteger('ndtTrangThai');
             $table->timestamps();
         });

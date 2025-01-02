@@ -7,78 +7,93 @@ use Illuminate\Http\Request;
 
 class NDT_LOAI_SAN_PHAMController extends Controller
 {
-    //admin:crud
-
-    //list
+    //admin CRUD
+    // list
     public function ndtList()
     {
-        $ndtLoaiSanPham = NDT_LOAI_SAN_PHAM::all();
-
-        return view('NdtAdmins.ndtLoaiSanPham.ndt-list',['ndtLoaiSanPham'=>$ndtLoaiSanPham]);
+        $ndtloaisanphams = NDT_LOAI_SAN_PHAM::all();
+        return view('ndtAdmins.ndtloaisanpham.ndt-list',['ndtloaisanphams'=>$ndtloaisanphams]);
     }
-    
+
     //create
     public function ndtCreate()
     {
-        return view('NdtAdmins.ndtLoaiSanPham.ndt-create');
+        return view('ndtAdmins.ndtloaisanpham.ndt-create');
     }
 
-    //create--submit
-    public function ndtCreateSubmit(Request $request)
+    public function ndtCreateSunmit(Request $request)
     {
-        //Validation Data
-        $validationData = $request->validate([
-            'ndtMaLoai'=>'required|unique:ndt_loai_san_pham',
-            'ndtTenLoai'=>'required',
+        $validatedData = $request->validate([
+            'ndtMaLoai' => 'required|unique:ndt_LOAI_SAN_PHAM,ndtMaLoai',  // Kiểm tra mã loại không trống và duy nhất
+            'ndtTenLoai' => 'required|string|max:255',  // Kiểm tra tên loại không trống và là chuỗi
+            'ndtTrangThai' => 'required|in:0,1',  // Trạng thái phải là 0 hoặc 1
         ]);
+        //ghi dữ liệu xuống db
+        $ndtloaisanpham = new NDT_LOAI_SAN_PHAM;
+        $ndtloaisanpham->ndtMaLoai = $request->ndtMaLoai;
+        $ndtloaisanpham->ndtTenLoai = $request->ndtTenLoai;
+        $ndtloaisanpham->ndtTrangThai = $request->ndtTrangThai;
 
-        // ghi dữ liệu xuống db
-
-        $ndtLoaiSanPham = new NDT_LOAI_SAN_PHAM;
-        $ndtLoaiSanPham->ndtMaLoai = $request->ndtMaLoai;
-        $ndtLoaiSanPham->ndtTenLoai = $request->ndtTenLoai;
-        $ndtLoaiSanPham->ndtTrangThai = $request->ndtTrangThai;
-        
-        $ndtLoaiSanPham->save();
-
-        return redirect()->route('ndtadmins.ndtloaisanpham');
+        $ndtloaisanpham->save();
+       return redirect()->route('ndtadmins.ndtloaisanpham');
     }
 
-    //edit
     public function ndtEdit($id)
     {
-        $ndtLoaiSanPham = NDT_LOAI_SAN_PHAM::find($id);
-        return view('NdtAdmins.ndtLoaiSanPham.ndt-edit',['ndtLoaiSanPham'=>$ndtLoaiSanPham]);
+        // Retrieve the product by the primary key (id)
+        $ndtloaisanpham = NDT_LOAI_SAN_PHAM::find($id);
+
+        // If the product does not exist, redirect with an error message
+        if (!$ndtloaisanpham) {
+            return redirect()->route('ndtadmins.ndtloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
+        }
+
+        // Pass the product data to the edit view
+        return view('ndtAdmins.ndtloaisanpham.ndt-edit', ['ndtloaisanpham' => $ndtloaisanpham]);
     }
 
-    //edit submit
     public function ndtEditSubmit(Request $request)
     {
-        //Validation Data
-        $validationData = $request->validate([
-            'ndtMaLoai'=>'required',
-            'ndtTenLoai'=>'required',
+        // Validate the form data
+        $validatedData = $request->validate([
+            'ndtMaLoai' => 'required|string|max:255|unique:ndt_LOAI_SAN_PHAM,ndtMaLoai,' . $request->id,  // Bỏ qua ndtMaLoai của bản ghi hiện tại
+            'ndtTenLoai' => 'required|string|max:255',
+            'ndtTrangThai' => 'required|in:0,1',  // Validation for ndtTrangThai (0 or 1)
         ]);
 
-        // ghi dữ liệu xuống db
+        // Find the product by id
+        $ndtloaisanpham = NDT_LOAI_SAN_PHAM::find($request->id);
 
-        $ndtLoaiSanPham = NDT_LOAI_SAN_PHAM::find($request->id);
+        // Check if the product exists
+        if (!$ndtloaisanpham) {
+            return redirect()->route('ndtadmins.ndtloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
+        }
 
-        $ndtLoaiSanPham->ndtMaLoai = $request->ndtMaLoai;
-        $ndtLoaiSanPham->ndtTenLoai = $request->ndtTenLoai;
-        $ndtLoaiSanPham->ndtTrangThai = $request->ndtTrangThai;
-        
-        $ndtLoaiSanPham->save();
+        // Update the product with validated data
+        $ndtloaisanpham->ndtMaLoai = $request->ndtMaLoai;
+        $ndtloaisanpham->ndtTenLoai = $request->ndtTenLoai;
+        $ndtloaisanpham->ndtTrangThai = $request->ndtTrangThai;
 
-        return redirect()->route('ndtadmins.ndtloaisanpham');
+        // Save the updated product
+        $ndtloaisanpham->save();
+
+        // Redirect back to the list page with a success message
+        return redirect()->route('ndtadmins.ndtloaisanpham')->with('success', 'Cập nhật loại sản phẩm thành công.');
     }
 
-    //Delete
+
+
+    public function ntdGetDetail($id)
+    {
+        $ndtloaisanpham = NDT_LOAI_SAN_PHAM::where('id', $id)->first();
+        return view('ndtAdmins.ndtloaisanpham.ndt-detail',['ndtloaisanpham'=>$ndtloaisanpham]);
+
+    }
+
     public function ndtDelete($id)
     {
-        $ndtLoaiSanPham = NDT_LOAI_SAN_PHAM::find($id);
-        $ndtLoaiSanPham->delete();
-        return redirect()->route('ndtadmins.ndtloaisanpham');
+        NDT_LOAI_SAN_PHAM::where('id',$id)->delete();
+    return back()->with('loaisanpham_deleted','Đã xóa Loại Sản Phẩm thành công!');
     }
 
 }
