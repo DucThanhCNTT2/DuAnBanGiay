@@ -26,7 +26,7 @@
       <div class="flex justify-between items-center py-2 text-sm">
         <div>
 
-          <a class="mr-4 hover:underline" href="{{route('ndtlogin.home')}}">Trang Chủ</a>
+          <a class="mr-4 hover:underline" href="{{route('ndtlogin.home1')}}">Trang Chủ</a>
           <a class="mr-4 hover:underline" href="#">Tải ứng dụng</a>
           <a class="mr-4 hover:underline" href="#">Kết nối</a>
           <a class="mr-2" href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
@@ -49,7 +49,7 @@
       <!-- Main Navigation -->
       <div class="flex items-center py-4">
         <div class="flex items-center">
-          <a href="{{route('ndtlogin.home')}}"><img alt=" logo" class="mr-2" height="40" src="/storage/img/san_pham/logoD.jpg" width="40"/></a>
+          <a href="{{route('ndtlogin.home1')}}"><img alt=" logo" class="mr-2" height="40" src="/storage/img/san_pham/logoD.jpg" width="40"/></a>
           <span class="text-2xl font-bold">buyshoes</span>
         </div>
         <div class="flex-grow mx-4">

@@ -14,7 +14,7 @@ class TRANGCHUController extends Controller
         $sanPhams = NDT_SAN_PHAM::paginate(6);  // Sử dụng paginate() để phân trang
 
         // Trả về view và truyền dữ liệu sản phẩm vào
-        return view('ndtlogin.home', compact('sanPhams'));
+        return view('NdtLogin.home', compact('sanPhams'));
     }
 
     public function index1()

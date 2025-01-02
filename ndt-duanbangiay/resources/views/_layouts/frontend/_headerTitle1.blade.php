@@ -60,7 +60,7 @@
       <div class="flex items-center py-4">
         <div class="flex items-center">
           <a href="{{route('ndtlogin.home1')}}"><img alt=" logo" class="mr-2" height="40" src="/storage/img/san_pham/logoD.jpg" width="40"/></a>
-          <span class="text-2xl font-bold">buyphone</span>
+          <span class="text-2xl font-bold">BuyShoes</span>
         </div>
         <div class="flex-grow mx-4">
           <form action="{{route('ndtlogin.search1')}}" method="GET" class="flex">

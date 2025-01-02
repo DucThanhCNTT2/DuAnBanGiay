@@ -155,7 +155,7 @@ Route::get('/ndt-admins/ndt-quan-tri/ndt-delete/{id}', [NDT_QUAN_TRICotroller::c
 
 
 // User - Routes
-Route::get('/ndt-login', [TRANGCHUController::class, 'index'])->name('ndtlogin.home');
+Route::get('/ndt-login', [TRANGCHUController::class, 'index'])->name('NdtLogin.home');
 Route::get('/ndt-login1', [TRANGCHUController::class, 'index1'])->name('ndtlogin.home1');
 // Hiển thị chi tiết sản phẩm
 Route::get('/ndt-login/show/{id}', [TRANGCHUController::class, 'show'])->name('ndtlogin.show');
