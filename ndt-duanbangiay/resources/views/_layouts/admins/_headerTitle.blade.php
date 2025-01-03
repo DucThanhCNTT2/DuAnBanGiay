@@ -100,7 +100,7 @@
         <div class="logo">
             <a href="/ndt-admins" class="text-white text-decoration-none">
                 <!-- Đường dẫn đến logo trong thư mục public/storage/img/san_pham/ -->
-                <img src="{{ asset('storage/img/san_pham/logoD.jpg') }}" alt="Logo" class="img-fluid" />
+                <img src="{{ asset('storage/img/san_pham/Logo.png') }}" alt="Logo" class="img-fluid" />
             </a>
         </div>
 

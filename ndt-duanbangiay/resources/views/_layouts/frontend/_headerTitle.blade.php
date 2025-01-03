@@ -49,7 +49,7 @@
       <!-- Main Navigation -->
       <div class="flex items-center py-4">
         <div class="flex items-center">
-          <a href="{{route('ndtlogin.home1')}}"><img alt=" logo" class="mr-2" height="40" src="/storage/img/san_pham/logoD.jpg" width="40"/></a>
+          <a href="{{route('ndtlogin.home1')}}"><img alt=" logo" class="mr-2" height="40" src="/storage/img/san_pham/Logo.png" width="40"/></a>
           <span class="text-2xl font-bold">buyshoes</span>
         </div>
         <div class="flex-grow mx-4">
