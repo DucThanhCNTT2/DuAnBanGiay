@@ -39,8 +39,8 @@ class NDT_KHACH_HANGTableSeeder extends Seeder
         DB::table('NDT_KHACH_HANG')->insert([
             'ndtMaKH'=>'KH003',
             'ndtTenKH'=>'Đặng Quang Minh',
-            'ndtEmail'=>'dpminh@gmail.com',
-            'ndtMatKhau'=>Hash::make('dpminh3366'), // Mã hóa mật khẩu
+            'ndtEmail'=>'dqminh@gmail.com',
+            'ndtMatKhau'=>Hash::make('dqminh3366'), // Mã hóa mật khẩu
             'ndtDienThoai'=>'0382550508',
             'ndtDiaChi'=>'Phú Thọ',
             'ndtNgayDK'=>'2024/12/17',

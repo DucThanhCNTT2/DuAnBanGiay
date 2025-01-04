@@ -51,7 +51,7 @@ class NDT_DANH_SACH_QUAN_TRIController extends Controller
 
         // Kiểm tra nếu sản phẩm không tồn tại
         if (!$product) {
-            return redirect()->route('ndtAdmins.ndtdanhsachquantri.ndtdanhmuc.sanpham')
+            return redirect()->route('ndtAdmins.ndtdanhsachquantri.ndtdanhmuc.ndtsanpham')
                             ->with('error', 'Sản phẩm không tồn tại.');
         }
 

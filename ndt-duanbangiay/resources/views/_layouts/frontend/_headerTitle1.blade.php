@@ -37,7 +37,7 @@
         </div>
         <div class="flex items-center space-x-4">
           <a class="hover:underline" href="#"><i class="fas fa-bell"></i> Thông Báo</a>
-          <a class="hover:underline" href="vtd-user/support">
+          <a class="hover:underline" href="ndt-login/support">
               <i class="fas fa-question-circle"></i> Hỗ Trợ
           </a>
           <a class="hover:underline" href="#"><i class="fas fa-globe"></i> Tiếng Việt</a>
@@ -46,7 +46,7 @@
               <span>{{ Session::has('username1') ? 'Hello, ' . Session::get('username1') : '' }}</span>
           </a>
           @if(Session::has('username1'))
-              <a class="hover:underline" href="{{ route('ndtlogin.home') }}">
+              <a class="hover:underline" href="{{ route('ndtlogin.home1') }}">
                   Đăng Xuất
               </a>
           @else

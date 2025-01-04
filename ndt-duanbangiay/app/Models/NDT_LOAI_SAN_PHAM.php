@@ -11,6 +11,6 @@ class NDT_LOAI_SAN_PHAM extends Model
 
     protected $table="NDT_LOAI_SAN_PHAM";
     protected $primaryKey = 'id';
-    public $incrementing = false; // Nếu vtdnhacc không phải là auto-increment
+    public $incrementing = false; // Nếu ndtnhacc không phải là auto-increment
     public $timestamps = true; // Đảm bảo là 'true' nếu bạn sử dụng timestamps
 }

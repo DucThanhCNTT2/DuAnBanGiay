@@ -27,7 +27,7 @@ class NDT_HOA_DON extends Model
         'ndtEmail',
         'ndtDienThoai',
         'ndtDiaChi',
-        'ndtTongGiaTri',
+        'ndtTongTriGia',
         'ndtTrangThai',
     ];
 
